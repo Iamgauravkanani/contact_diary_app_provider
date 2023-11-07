@@ -1,4 +1,5 @@
 import 'package:contact_diary_app_2/Utils/Themes/app_theme.dart';
+import 'package:contact_diary_app_2/Utils/add_contact_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,7 +9,10 @@ void main() {
       darkTheme: Themes.darkTheme,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      routes: {
+        '/': (ctx) => HomeScreen(),
+        'add_contact': (ctx) => Add_Contact_Screen(),
+      },
     ),
   );
 }
@@ -25,20 +29,34 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, 'add_contact');
+        },
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: const Text("Home Screen"),
+        title: const Text("Contact Diary"),
         titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
         centerTitle: true,
       ),
       body: Center(
-        child: Text(
-          "0",
-          style: Theme.of(context).textTheme.displayLarge,
-        ),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: 440,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  "lib/Utils/Assets/no_contact.gif",
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          )
+        ],
+      )),
     );
   }
 }
