@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Globals/globals.dart';
+import '../../../Utils/Globals/globals.dart';
 
 class Add_Contact_Screen extends StatefulWidget {
   const Add_Contact_Screen({super.key});
