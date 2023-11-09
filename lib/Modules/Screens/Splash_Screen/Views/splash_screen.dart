@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class Splash_Screen extends StatelessWidget {
@@ -8,9 +7,12 @@ class Splash_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.sizeOf(context).height;
-    Timer(Duration(seconds: 4), () {
-      Navigator.pushNamed(context, 'home');
-    });
+    Timer(
+      const Duration(seconds: 4),
+      () {
+        Navigator.pushReplacementNamed(context, 'home');
+      },
+    );
     return Scaffold(
       body: Center(
         child: Column(
@@ -21,7 +23,7 @@ class Splash_Screen extends StatelessWidget {
               child: Container(
                 height: height * 0.6,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
                       "lib/Modules/Utils/Assets/splash_animation.gif",

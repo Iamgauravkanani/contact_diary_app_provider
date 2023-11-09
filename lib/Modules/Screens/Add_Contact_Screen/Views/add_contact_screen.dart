@@ -20,14 +20,14 @@ class _Add_Contact_ScreenState extends State<Add_Contact_Screen> {
       body: Stepper(
         onStepContinue: () {
           setState(() {
-            if (Global.currentIndex <= 3) {
+            if (Global.currentIndex != 3) {
               Global.currentIndex++;
             }
           });
         },
         onStepCancel: () {
           setState(() {
-            if (Global.currentIndex >= 0) {
+            if (Global.currentIndex != 0) {
               Global.currentIndex--;
             }
           });
