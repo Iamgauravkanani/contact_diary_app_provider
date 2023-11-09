@@ -8,24 +8,20 @@ class Counter_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Consumer<CounterProvider>(
-        builder: (ctx, cp, _) => FloatingActionButton(
-          onPressed: () {
-            cp.increment();
-          },
-          child: Icon(Icons.add),
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Provider.of<CounterProvider>(context, listen: false).increment();
+        },
+        child: Icon(Icons.add),
       ),
       appBar: AppBar(
         title: Text("Counter Screen"),
         centerTitle: true,
       ),
       body: Center(
-        child: Consumer<CounterProvider>(
-          builder: (ctx, cp, _) => Text(
-            "${cp.counter.count}",
-            style: Theme.of(context).textTheme.displayLarge,
-          ),
+        child: Text(
+          "${Provider.of<CounterProvider>(context, listen: true).counter.count}",
+          style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
     );
