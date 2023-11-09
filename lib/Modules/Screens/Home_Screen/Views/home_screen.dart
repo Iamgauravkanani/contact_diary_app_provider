@@ -1,13 +1,10 @@
+import 'package:contact_diary_app_2/Modules/Screens/Home_Screen/Providers/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +15,16 @@ class _HomeScreenState extends State<HomeScreen> {
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false).changeTheme();
+            },
+            icon: Icon(
+              Icons.dark_mode,
+            ),
+          ),
+        ],
         title: const Text("Contact Diary"),
         titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
         centerTitle: true,
@@ -30,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 440,
             width: double.infinity,
             decoration: const BoxDecoration(
+              color: Colors.transparent,
               image: DecorationImage(
                 image: AssetImage(
                   "lib/Modules/Utils/Assets/no_contact.gif",
