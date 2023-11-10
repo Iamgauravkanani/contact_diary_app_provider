@@ -5,27 +5,31 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Modules/Screens/Counter_Screen/Views/counter_screen.dart';
 import 'Modules/Screens/Home_Screen/Views/home_screen.dart';
+import 'Modules/Screens/Intro_Screen/Views/intro_screen.dart';
 import 'Modules/Utils/Themes/app_theme.dart';
 import 'Modules/Screens/Add_Contact_Screen/Views/add_contact_screen.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers: [
-      ListenableProvider<CounterProvider>(create: (ctx) => CounterProvider()),
-      ListenableProvider<ThemeProvider>(create: (ctx) => ThemeProvider()),
-    ],
-    builder: (ctx, _) => MaterialApp(
-      theme: Themes.lightTheme,
-      darkTheme: Themes.darkTheme,
-      themeMode: (Provider.of<ThemeProvider>(ctx).theme.isDark == true)
-          ? ThemeMode.dark
-          : ThemeMode.light,
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/': (ctx) => Splash_Screen(),
-        'home': (ctx) => HomeScreen(),
-        'add_contact': (ctx) => Add_Contact_Screen(),
-      },
+  runApp(
+    MultiProvider(
+      providers: [
+        ListenableProvider<CounterProvider>(create: (ctx) => CounterProvider()),
+        ListenableProvider<ThemeProvider>(create: (ctx) => ThemeProvider()),
+      ],
+      builder: (ctx, _) => MaterialApp(
+        theme: Themes.lightTheme,
+        darkTheme: Themes.darkTheme,
+        themeMode: (Provider.of<ThemeProvider>(ctx).theme.isDark == true)
+            ? ThemeMode.dark
+            : ThemeMode.light,
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (ctx) => Splash_Screen(),
+          'intro': (ctx) => Intro_Screen(),
+          'home': (ctx) => HomeScreen(),
+          'add_contact': (ctx) => Add_Contact_Screen(),
+        },
+      ),
     ),
-  ));
+  );
 }

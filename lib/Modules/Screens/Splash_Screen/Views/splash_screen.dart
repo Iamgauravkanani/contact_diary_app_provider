@@ -10,7 +10,7 @@ class Splash_Screen extends StatelessWidget {
     Timer(
       const Duration(seconds: 4),
       () {
-        Navigator.pushReplacementNamed(context, 'home');
+        Navigator.pushReplacementNamed(context, 'intro');
       },
     );
     return Scaffold(
@@ -26,7 +26,7 @@ class Splash_Screen extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      "lib/Modules/Utils/Assets/splash_animation.gif",
+                      "lib/Modules/Utils/Assets/sp.gif",
                     ),
                     fit: BoxFit.cover,
                   ),
