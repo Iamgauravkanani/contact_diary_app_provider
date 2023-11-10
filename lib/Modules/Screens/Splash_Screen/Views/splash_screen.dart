@@ -1,16 +1,21 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Splash_Screen extends StatelessWidget {
-  const Splash_Screen({super.key});
+  Splash_Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.sizeOf(context).height;
     Timer(
       const Duration(seconds: 4),
-      () {
-        Navigator.pushReplacementNamed(context, 'intro');
+      () async {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+
+        bool isIntroVisited = preferences.getBool("isIntroVisited") ?? false;
+        Navigator.pushReplacementNamed(
+            context, (isIntroVisited) ? 'home' : 'intro');
       },
     );
     return Scaffold(

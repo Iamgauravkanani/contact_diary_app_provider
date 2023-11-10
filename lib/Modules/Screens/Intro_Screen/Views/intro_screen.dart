@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Intro_Screen extends StatelessWidget {
   const Intro_Screen({super.key});
@@ -36,7 +37,10 @@ class Intro_Screen extends StatelessWidget {
         next: Text("Next"),
         skip: const Text("Skip"),
         done: const Text("Done"),
-        onDone: () {
+        onDone: () async {
+          SharedPreferences preferences = await SharedPreferences.getInstance();
+
+          preferences.setBool('isIntroVisited', true);
           Navigator.pushReplacementNamed(context, 'home');
         },
       ),
