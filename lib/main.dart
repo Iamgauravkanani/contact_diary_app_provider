@@ -1,4 +1,5 @@
 import 'package:contact_diary_app_2/Modules/Screens/Counter_Screen/Providers/counter_provider.dart';
+import 'package:contact_diary_app_2/Modules/Screens/Home_Screen/Model/theme_model.dart';
 import 'package:contact_diary_app_2/Modules/Screens/Home_Screen/Providers/theme_provider.dart';
 import 'package:contact_diary_app_2/Modules/Screens/Splash_Screen/Views/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,16 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
 
+  bool isDark = preferences.getBool('isDark') ?? false;
+
   runApp(
     MultiProvider(
       providers: [
         ListenableProvider<CounterProvider>(create: (ctx) => CounterProvider()),
-        ListenableProvider<ThemeProvider>(create: (ctx) => ThemeProvider()),
+        ListenableProvider<ThemeProvider>(
+            create: (ctx) => ThemeProvider(
+                  theme: ThemeModel(isDark: isDark),
+                )),
       ],
       builder: (ctx, _) => MaterialApp(
         theme: Themes.lightTheme,

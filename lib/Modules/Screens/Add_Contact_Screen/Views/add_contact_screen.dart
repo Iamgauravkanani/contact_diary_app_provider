@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../../../Utils/Globals/globals.dart';
@@ -14,6 +16,20 @@ class _Add_Contact_ScreenState extends State<Add_Contact_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                log("-------------------------------------------------------");
+                log("${Global.email}");
+                log("${Global.name}");
+                log("${Global.phone}");
+                log("-------------------------------------------------------");
+                Global.nameController.clear();
+                Global.emailController.clear();
+                Global.phoneController.clear();
+              },
+              icon: Icon(Icons.add))
+        ],
         title: Text("Add Contact Here"),
         centerTitle: true,
       ),
@@ -57,7 +73,7 @@ class _Add_Contact_ScreenState extends State<Add_Contact_Screen> {
                   Global.name = val;
                 });
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: "Enter Your Name", border: OutlineInputBorder()),
             ),
           ),
