@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Themes {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: Colors.green,
+    colorSchemeSeed: Colors.blue,
     brightness: Brightness.light,
     textTheme: const TextTheme(
       displayLarge: TextStyle(
@@ -22,7 +22,7 @@ class Themes {
 
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: Colors.green,
+    colorSchemeSeed: Colors.red,
     brightness: Brightness.dark,
     textTheme: const TextTheme(
       displayLarge: TextStyle(

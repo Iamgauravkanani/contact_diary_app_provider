@@ -1,7 +1,8 @@
 import 'dart:developer';
-
+import 'package:contact_diary_app_2/Modules/Screens/Add_Contact_Screen/Model/Contact_Model/contact_model.dart';
+import 'package:contact_diary_app_2/Modules/Screens/Add_Contact_Screen/Providers/Contact_Provider/contact_provider.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import '../../../Utils/Globals/globals.dart';
 
 class Add_Contact_Screen extends StatefulWidget {
@@ -18,17 +19,28 @@ class _Add_Contact_ScreenState extends State<Add_Contact_Screen> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {
-                log("-------------------------------------------------------");
-                log("${Global.email}");
-                log("${Global.name}");
-                log("${Global.phone}");
-                log("-------------------------------------------------------");
-                Global.nameController.clear();
-                Global.emailController.clear();
-                Global.phoneController.clear();
-              },
-              icon: Icon(Icons.add))
+            onPressed: () {
+              log("-------------------------------------------------------");
+              log("${Global.email}");
+              log("${Global.name}");
+              log("${Global.phone}");
+              log("-------------------------------------------------------");
+
+              Provider.of<ContactProvider>(context, listen: false).addContact(
+                contact_details: Contact(
+                  name: Global.name!,
+                  email: Global.email!,
+                  phone: Global.phone!,
+                ),
+              );
+              Global.nameController.clear();
+              Global.emailController.clear();
+              Global.phoneController.clear();
+
+              Navigator.pushNamed(context, 'home');
+            },
+            icon: Icon(Icons.add),
+          ),
         ],
         title: Text("Add Contact Here"),
         centerTitle: true,

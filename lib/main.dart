@@ -1,3 +1,4 @@
+import 'package:contact_diary_app_2/Modules/Screens/Add_Contact_Screen/Providers/Contact_Provider/contact_provider.dart';
 import 'package:contact_diary_app_2/Modules/Screens/Counter_Screen/Providers/counter_provider.dart';
 import 'package:contact_diary_app_2/Modules/Screens/Home_Screen/Model/theme_model.dart';
 import 'package:contact_diary_app_2/Modules/Screens/Home_Screen/Providers/theme_provider.dart';
@@ -21,6 +22,7 @@ void main() async {
     MultiProvider(
       providers: [
         ListenableProvider<CounterProvider>(create: (ctx) => CounterProvider()),
+        ListenableProvider<ContactProvider>(create: (ctx) => ContactProvider()),
         ListenableProvider<ThemeProvider>(
             create: (ctx) => ThemeProvider(
                   theme: ThemeModel(isDark: isDark),
