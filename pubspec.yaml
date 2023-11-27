@@ -40,6 +40,7 @@ dependencies:
   shared_preferences:
   url_launcher:
   share_plus:
+  local_auth:
 
 dev_dependencies:
   flutter_test:
